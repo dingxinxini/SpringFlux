@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!-- 指定数据库驱动位置 -->
+    <classPathEntry location="D:\Idea_Projects\ch05\spring-lib\mysql-connector-java-5.1.40.jar"/>
+
+
+    <context id="context" targetRuntime="MyBatis3Simple">
+        <commentGenerator>
+            <property name="suppressAllComments" value="false"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!-- 指定jdbc的连接 -->
+        <jdbcConnection userId="root" password="root" driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/smbms?characterEncoding=utf-8"/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 指定实体类 -->
+        <javaModelGenerator targetPackage="org.lichuang.commons.entity" targetProject="src">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- 接口 -->
+        <javaClientGenerator targetPackage="org.lichuang.app.dao" type="XMLMAPPER" targetProject="src">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <table schema="smbms" tableName ="t_sys_user" enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false"/>
+    </context>
+</generatorConfiguration>

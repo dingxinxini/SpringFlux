@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+角色为：
+<span th:text="${role.roleName}"></span>
+<span th:if="${role.roleName}=='ADMIN'">
+    管理员
+  </span>
+<ul>
+    <li th:each="r:${roles}">
+        <span th:text="${r}"></span>
+    </li>
+</ul>
+<div th:attr="roles=${role.roleName}">attr</div>
+<script th:inline="javascript">
+    window.onload=function () {
+        alert('[[${role.roleName}]]');
+    }
+</script>
+<!-- #{}可以获取配置文件内的属性-->
+<p th:utext="#{spring.datasource.driverClassName}">Welcome to our grocery store!</p>
+</body>
+</html>
